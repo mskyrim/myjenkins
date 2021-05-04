@@ -1,0 +1,32 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+jenkins:
+  systemMessage: "Mehdi's Jenkins"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+       - id: ${JENKINS_ADMIN_ID}
+         password: ${JENKINS_ADMIN_PASSWORD}
+       - id: renzo
+         password: hello00 
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
+        - "Job/Build:authenticated"
+        - "Job/Cancel:authenticated"
+        - "Job/Read:authenticated"
+        - "Job/Workspace:authenticated"
+        - "Run/Update:authenticated"
+        - "Run/Replay:authenticated"
+        - "Run/Delete:authenticated"
+        - "View/Read:authenticated"
+  remotingSecurity:
+    enabled: true
+unclassified:
+  location:
+    url: http://localhost:8088
